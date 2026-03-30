@@ -1,0 +1,183 @@
+@startuml
+class Game.Arco.Build.Elements.Player {
+~ double s_x
+~ double s_y
+~ double a
+~ double max_speed
+~ double drag
+~ double grav
+~ boolean on_ground
+~ boolean wDown
+~ boolean sDown
+~ boolean aDown
+~ boolean dDown
+~ boolean spaceDown
+~ boolean shiftDown
+~ boolean controlDown
+~ double cool_down
+~ double counter_aux
+~ int current_frame
+~ double frame_timer
+~ double totalArea
+~ int centerX
+~ int centerY
+~ double sumX
+~ double sumY
+~ ArrayList<Overlay> frameList
+~ ArrayList<Element> elementArrayList
+~ ArrayList<ImageIcon> imageIconArrayList
++ void setImageIconArrayList(ArrayList<ImageIcon>)
++ void createControls(JFrame)
++ void update()
++ void tick(int,int,double)
++ void movement(double)
+~ void jump()
+~ void dash()
++ boolean solveX(int)
++ boolean solveY(int)
++ int getCenterX()
++ void setCenterX(int)
++ int getCenterY()
++ void setCenterY(int)
++ void setFrameList(ArrayList<Overlay>)
++ void setElementArrayList(ArrayList<Element>)
+}
+
+
+class Game.Arco.Build.Elements.Tile {
+~ int current_frame
+~ double frame_timer
+~ double totalArea
+~ int centerX
+~ int centerY
+~ double sumX
+~ double sumY
+~ ArrayList<Overlay> frameList
+~ JPanel jPanel
++ void setjPanel(JPanel)
+}
+
+
+class Game.Arco.GameFrame {
+~ GameLoop gameLoop
+~ JFrame frame
+~ Tile tile_1
+~ Tile tile_2
+~ Tile tile_3
+~ Tile tile_4
+~ Tile tile_5
+~ Tile tile_6
+~ Tile tile_7
+~ Tile tile_8
+~ Tile tile_9
+~ Tile tile_10
+~ Tile tile_11
+~ Tile tile_12
+~ Tile tile_13
+~ Tile tile_14
+~ Tile tile_15
+~ Tile tile_16
+~ Tile tile_17
+~ Tile tile_18
+~ Tile tile_19
+~ Tile tile_20
+~ Overlay tileOverlay
+~ Overlay tileOverlay_2
+~ Overlay tileOverlay_3
+~ Overlay tileOverlay_4
+~ Overlay tileOverlay_5
+~ Overlay tileOverlay_6
+~ Overlay tileOverlay_7
+~ Overlay tileOverlay_8
+~ Overlay tileOverlay_9
+~ Overlay tileOverlay_10
+~ Overlay tileOverlay_11
+~ Overlay tileOverlay_12
+~ Overlay tileOverlay_13
+~ Overlay tileOverlay_14
+~ Overlay tileOverlay_15
+~ Overlay tileOverlay_16
+~ Overlay tileOverlay_17
+~ Overlay tileOverlay_18
+~ Overlay tileOverlay_19
+~ Overlay tileOverlay_20
+~ ViewPort viewPort
+~ Player player
+~ Overlay Frame_01
+~ Overlay Frame_02
+~ Overlay Frame_03
+~ Overlay Frame_04
+}
+
+class Game.Arco.ViewPort {
+~ int viewport_width
+~ int viewport_height
+~ int position_x
+~ int position_y
++ int getViewport_width()
++ int getViewport_height()
++ int getPosition_x()
++ void setPosition_x(int)
++ int getPosition_y()
++ void setPosition_y(int)
+}
+
+
+class Game.Arco.Main {
++ {static} void main(String[])
+}
+
+class Game.Arco.Build.GameLoop {
+~ long lastTime
+~ ViewPort viewPort
+~ ArrayList<Element> elementArrayList
++ void start_this()
++ void actionPerformed(ActionEvent)
+# void paintComponent(Graphics)
++ void addElement(Element)
++ ArrayList<Element> getElementArrayList()
++ void setViewPort(ViewPort)
+}
+
+
+abstract class Game.Arco.Build.Element {
+~ List<Overlay> overlays
+~ ViewPort viewPort
++ List<Overlay> getOverlays()
++ void addOverlay(Overlay)
++ ViewPort getViewPort()
++ void setViewPort(ViewPort)
+}
+
+
+class Game.Arco.Build.Overlay {
++ int image_width
+- int x
+- String name
+- Image image
+- Rectangle rect
+- ViewPort viewPort
++ void render(Graphics)
++ void setViewPort(ViewPort)
++ void setH(int)
++ void setName(String)
++ int getX()
++ void setX(int)
++ int getY()
++ void setY(int)
++ int getW()
++ void setW(int)
++ Image getImage()
++ void setImage(Image)
++ Rectangle getRect()
+}
+
+
+
+
+Game.Arco.Build.Element <|-- Game.Arco.Build.Elements.Player
+Game.Arco.Build.Element <|-- Game.Arco.Build.Elements.Tile
+Game.Arco.JFrame <|-- Game.Arco.GameFrame
+java.awt.event.ActionListener <|.. Game.Arco.Build.GameLoop
+Game.Arco.Build.JPanel <|-- Game.Arco.Build.GameLoop
+@enduml
